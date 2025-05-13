@@ -1,21 +1,198 @@
+// import React from 'react';
+// import { createDrawerNavigator } from '@react-navigation/drawer';
+// import { useSelector } from 'react-redux';
+// import { TouchableOpacity, Text } from 'react-native';
+// import { useNavigation } from '@react-navigation/native';
+
+// import HomeScreen from '../screens/HomeScreen';
+// import ProfileScreen from '../screens/ProfileScreen';
+// import SettingsScreen from '../screens/SettingsScreen';
+// import AboutScreen from '../screens/AboutScreen';
+// import CounterScreen from '../screens/CounterScreen';
+// import AccessDeniedScreen from '../screens/AccessDeniedScreen';
+
+// const Drawer = createDrawerNavigator();
+
+// const BackButton = () => {
+//   const navigation = useNavigation();
+
+//   return (
+//     <TouchableOpacity
+//       style={{ marginLeft: 15 }}
+//       onPress={() => navigation.replace('Login')}
+//     >
+//       <Text style={{ fontSize: 16 }}>🔙</Text>
+//     </TouchableOpacity>
+//   );
+// };
+
+// const DrawerNavigator = () => {
+//   const role = useSelector((state) => state.role.value);
+
+//   return (
+//     <Drawer.Navigator
+//       screenOptions={{
+//         headerLeft: () => <BackButton />, // ⬅️ har screen pe back button
+//       }}
+//     >
+//       {role === 'vendor' ? (
+//         <>
+//           <Drawer.Screen name="Home" component={HomeScreen} />
+//           <Drawer.Screen name="Profile" component={ProfileScreen} />
+//           <Drawer.Screen name="Settings" component={SettingsScreen} />
+//           <Drawer.Screen name="About" component={AboutScreen} />
+//         </>
+//       ) : role === 'rider' ? (
+//         <>
+//           <Drawer.Screen name="Counter" component={CounterScreen} />
+//           <Drawer.Screen name="About" component={AboutScreen} />
+//         </>
+//       ) : (
+//         <Drawer.Screen name="Access Denied" component={AccessDeniedScreen} />
+//       )}
+//     </Drawer.Navigator>
+//   );
+// };
+
+// export default DrawerNavigator;
+
+
+
+
+
+
+
+// import React from 'react';
+// import { createDrawerNavigator } from '@react-navigation/drawer';
+// import { useSelector } from 'react-redux';
+// import { TouchableOpacity, View } from 'react-native';
+// import { useNavigation } from '@react-navigation/native';
+// import Ionicons from 'react-native-vector-icons/Ionicons';
+
+// import HomeScreen from '../screens/HomeScreen';
+// import ProfileScreen from '../screens/ProfileScreen';
+// import SettingsScreen from '../screens/SettingsScreen';
+// import AboutScreen from '../screens/AboutScreen';
+// import CounterScreen from '../screens/CounterScreen';
+// import AccessDeniedScreen from '../screens/AccessDeniedScreen';
+
+// const Drawer = createDrawerNavigator();
+
+// const HeaderLeft = () => {
+//   const navigation = useNavigation();
+
+//   return (
+//     <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+//       <TouchableOpacity onPress={() => navigation.toggleDrawer()} style={{ marginLeft: 10 }}>
+//         <Ionicons name="menu" size={28} color="black" />
+//       </TouchableOpacity>
+
+//       <TouchableOpacity onPress={() => navigation.replace('Login')} style={{ marginLeft: 20 }}>
+//         <Ionicons name="arrow-back" size={24} color="black" />
+//       </TouchableOpacity>
+//     </View>
+//   );
+// };
+
+// const DrawerNavigator = () => {
+//   const role = useSelector((state) => state.role.value);
+
+//   return (
+//     <Drawer.Navigator
+//       screenOptions={{
+//         headerLeft: () => <HeaderLeft />,
+//       }}
+//     >
+//       {role === 'vendor' ? (
+//         <>
+//           <Drawer.Screen name="Home" component={HomeScreen} />
+//           <Drawer.Screen name="Profile" component={ProfileScreen} />
+//           <Drawer.Screen name="Settings" component={SettingsScreen} />
+//           <Drawer.Screen name="About" component={AboutScreen} />
+//         </>
+//       ) : role === 'rider' ? (
+//         <>
+//           <Drawer.Screen name="Counter" component={CounterScreen} />
+//           <Drawer.Screen name="About" component={AboutScreen} />
+//         </>
+//       ) : (
+//         <Drawer.Screen name="Access Denied" component={AccessDeniedScreen} />
+//       )}
+//     </Drawer.Navigator>
+//   );
+// };
+
+// export default DrawerNavigator;
+
+
+
+
+
 import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import BottomTabs from './BottomTabs';
+import { useSelector } from 'react-redux';
+import { TouchableOpacity, View } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+
+import HomeScreen from '../screens/HomeScreen';
+import ProfileScreen from '../screens/ProfileScreen';
 import SettingsScreen from '../screens/SettingsScreen';
 import AboutScreen from '../screens/AboutScreen';
 import CounterScreen from '../screens/CounterScreen';
+import AccessDeniedScreen from '../screens/AccessDeniedScreen';
 
+import BookingHistoryScreen from '../screens/BookingHistoryScreen';
+import WalletScreen from '../screens/WalletScreen';
+import ContactUsScreen from '../screens/ContactUsScreen';
 
 const Drawer = createDrawerNavigator();
 
-const DrawerNavigator = () => (
-  <Drawer.Navigator>
-    <Drawer.Screen name="MainTabs" component={BottomTabs} />
-    <Drawer.Screen name="Settings" component={SettingsScreen} />
-    <Drawer.Screen name="About" component={AboutScreen} />
-    <Drawer.Screen name="Counter" component={CounterScreen} />
+const HeaderLeft = () => {
+  const navigation = useNavigation();
 
-  </Drawer.Navigator>
-);
+  return (
+    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+      <TouchableOpacity onPress={() => navigation.toggleDrawer()} style={{ marginLeft: 10 }}>
+        <Ionicons name="menu" size={28} color="black" />
+      </TouchableOpacity>
+
+      <TouchableOpacity onPress={() => navigation.replace('Login')} style={{ marginLeft: 20 }}>
+        <Ionicons name="arrow-back" size={24} color="black" />
+      </TouchableOpacity>
+    </View>
+  );
+};
+
+const DrawerNavigator = () => {
+  const role = useSelector((state) => state.role.value);
+
+  return (
+    <Drawer.Navigator
+      screenOptions={{
+        headerLeft: () => <HeaderLeft />,
+      }}
+    >
+      {role === 'vendor' ? (
+        <>
+          <Drawer.Screen name="Home" component={HomeScreen} />
+          <Drawer.Screen name="Profile" component={ProfileScreen} />
+          <Drawer.Screen name="Settings" component={SettingsScreen} />
+          <Drawer.Screen name="About" component={AboutScreen} />
+        </>
+      ) : role === 'rider' ? (
+        <>
+          <Drawer.Screen name="Home" component={HomeScreen} />
+          <Drawer.Screen name="Booking History" component={BookingHistoryScreen} />
+          <Drawer.Screen name="Wallet" component={WalletScreen} />
+          <Drawer.Screen name="Contact Us" component={ContactUsScreen} />
+        </>
+      ) : (
+        <Drawer.Screen name="Access Denied" component={AccessDeniedScreen} />
+      )}
+    </Drawer.Navigator>
+  );
+};
 
 export default DrawerNavigator;
+
