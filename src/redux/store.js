@@ -1,20 +1,14 @@
-// import { configureStore } from '@reduxjs/toolkit';
-// import counterReducer from './counterSlice';
+import { configureStore } from "@reduxjs/toolkit";
 
-// export const store = configureStore({
-//   reducer: {
-//     counter: counterReducer,
-//   },
-// });
-import { configureStore } from '@reduxjs/toolkit';
-import counterReducer from './counterSlice';
-import roleReducer from './roleSlice';
-
-export const store = configureStore({
-  reducer: {
-    counter: counterReducer,
-    role: roleReducer,
-  },
-});
+import  counterReducer from "./Slice/counterSlice" 
 
 
+const store = configureStore({
+    reducer : {
+
+        counter : counterReducer
+
+    }
+})
+
+export default store
